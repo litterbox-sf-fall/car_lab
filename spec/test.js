@@ -1,76 +1,136 @@
-var expect = require("chai").expect;
-var Car = require("../src/car");
+// test/car_test.js
 
-var myTestCar = new Car("honda", "accord",2005,"red");
-console.log(myTestCar);
+var Car = require('../src/car.js'), // use the chai library with mocha
+// chai is an assertion library
+  expect = require('chai').expect;
 
-describe("Car", function(){
-  it("It should have a make", function(){
-    expect(myTestCar.make).to.equal("honda");
+describe('Car', function(){ // describe is a group of tests we want to run for a feature
+
+  var myCar;
+
+  beforeEach(function(){
+    // create a new myCar object each time
+    myCar = new Car('jeep', 'liberty', 'burgundy');
   });
-  it("It should have a model", function(){
 
+  describe('#year', function(){
+    it('should be the current year', function(){
+      expect(myCar.year).to.equal(new Date().getFullYear());
+    });
   });
-  it("It should have a year", function(){
 
+  describe('#state', function(){
+    it('should initially be off', function(){
+      expect(myCar.state).to.equal('off');
+    });
   });
-  it("It should have a color", function(){
 
+  describe('#previousOwners', function(){
+    it('should initially be empty', function(){
+      expect(myCar.previousOwners).to.be.empty;
+    });
   });
-});
 
-describe("Sale", function(){
-  it("It should be a function", function(){
-
+  describe('#curretOwner', function(){
+    it('should initially be manufacturer', function(){
+      expect(myCar.currentOwner).to.equal('manufacturer');
+    });
   });
-});
 
-describe("Paint", function(){
-  it("It should be a function", function(){
-
+  describe('#passengers', function(){
+    it('should initially be empty', function(){
+      expect(myCar.passengers).to.be.empty;
+    });
   });
-});
 
-describe("Drive", function(){
-  it("It should be a function", function(){
+  describe('#sale', function(){
 
+    it('should move currentOwner to previousOwners array', function(){
+      myCar.sale('Cameron');
+      expect(myCar.previousOwners).to.eql(['manufacturer']);
+    });
+
+    it('should update currentOwner with the new owner', function(){
+      myCar.sale('Cameron');
+      expect(myCar.currentOwner).to.equal('Cameron');
+    });
   });
-});
 
-describe("Start", function(){
-  it("It should be a function", function(){
-
+  describe('#paint', function(){
+    it('should update the color of myCar', function(){
+      myCar.paint('teal');
+      expect(myCar.color).to.equal('teal');
+    });
   });
-  it("should change the state to on", function(){
 
+  describe('#start', function(){
+    it('should update the state to on', function(){
+      myCar.start();
+      expect(myCar.state).to.equal('on');
+    });
   });
-});
 
-describe("Off", function(){
-  it("It should be a function", function(){
-
+  describe('#off', function(){
+    it('should update the state to off', function(){
+      myCar.off();
+      expect(myCar.state).to.equal('off');
+    });
   });
-  it("should change the state to off", function(){
 
+  describe('#driveTo', function(){
+    it('should return undefined', function(){
+      myCar.start();
+      expect(myCar.driveTo('ikea')).to.equal(undefined);
+    });
+
+    it('should return undefined', function(){
+      myCar.off();
+      expect(myCar.driveTo('ikea')).to.equal(undefined);
+    });
   });
-});
 
-describe("Passengers", function(){
-  it("It should default to an empty array", function(){
+  describe('#park', function(){
+    it('should return undefined', function(){
+      myCar.off();
+      expect(myCar.park()).to.equal(undefined);
+    });
 
+    it('should return undefined', function(){
+      myCar.start();
+      expect(myCar.park()).to.equal(undefined);
+    });
   });
-});
 
-describe("Pickup", function(){
-  it("It should be a function", function(){
+  describe('#pickUp', function(){
+    it('should add the passenger to the passengers array if car is on', function(){
+      myCar.start();
+      myCar.pickUp('Bob');
+      expect(myCar.passengers).to.eql(['Bob']);
+    });
 
+    it('should not modify the passengers array if car is off', function(){
+      myCar.pickUp('Bob');
+      expect(myCar.passengers).to.be.empty;
+    });
   });
-});
 
-describe("Dropoff", function(){
-  it("It should be a function", function(){
+  describe('#dropOff', function(){
+    it('should remove passenger from the passengers array if car is on', function(){
+      myCar.start();
+      myCar.pickUp('Bob');
+      myCar.dropOff('Bob');
+      expect(myCar.passengers).to.be.empty;
+    });
 
+    it('should leave passenger in the passengers array if car is off', function(){
+      myCar.start();
+      myCar.pickUp('Bob');
+      myCar.off();
+      myCar.dropOff('Bob');
+      expect(myCar.passengers).to.eql(['Bob']);
+    });
   });
+
 });
 
 
