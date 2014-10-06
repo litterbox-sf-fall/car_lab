@@ -1,0 +1,21 @@
+{
+  "name": "apartment_lab",
+  "version": "0.0.1",
+  "description": "a lab for playing with constructors and prototypes in JS",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wdi-sf-july/apartment_lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^1.9.1"
+  }
+}
