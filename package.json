@@ -7,11 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wdi-sf-july/apartment_lab.git"
+    "test": "mocha -R spec spec/test.js"
   },
   "author": "",
   "license": "ISC",
