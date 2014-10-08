@@ -1,12 +1,13 @@
-var Car = require('../src/car.js'), // use the chai library with mocha
-// chai is an assertion library
-  expect = require('chai').expect;
+// this syntax (seperate variables with comma and remove the following var
+//is common when you have more than one variable being declared at a time
 
-describe('Car', function(){ // describe is a group of tests we want to run for a feature
+var Car = require('../src/car.js'),
+expect = require('chai').expect;
+
+describe('Car', function(){
 
   beforeEach(function(){
     // create a new myCar object each time
-    myCar = new Car('jeep', 'liberty', 'burgundy');
   });
 
   describe('#year', function(){
@@ -69,25 +70,11 @@ describe('Car', function(){ // describe is a group of tests we want to run for a
     });
   });
 
-  describe('#driveTo', function(){
-    it('should return undefined', function(){
-
-    });
-
-    it('should return undefined', function(){
-      myCar.off();
-      expect(myCar.driveTo('ikea')).to.equal(undefined);
-    });
-  });
-
   describe('#park', function(){
-    it('should return undefined', function(){
+    it('should make sure to only work when the car is off', function(){
 
     });
 
-    it('should return undefined', function(){
-
-    });
   });
 
   describe('#pickUp', function(){
