@@ -1,11 +1,7 @@
 # Prototype Body Shop
 ## Implement the following
 
-The idea of this lab is to get you comfortable with writing and implementing prototypes. We will also review testing in the lab.
-
-# Cars
-
-We need a prototype for a car can you help us with your sweet javascript skills?
+The idea of this lab is to get you comfortable with writing and implementing prototypes and constructors. We will also review testing in the lab.
 
 ### Phase I
 
