@@ -22,7 +22,7 @@ As a default a `new Car` should have the following values:
 
 We should also be able to do the following with our car.
 
-*  `Car#sale`, we should be able to sale a car to someone, which should update the `current_owner` and `previous_owners` array.
+*  `Car#sale`, we should be able to sell a car to someone, which should update the `current_owner` and `previous_owners` array.
 
 * `Car#paint`, which should take a new color and update the color of the car to be new color.
 
